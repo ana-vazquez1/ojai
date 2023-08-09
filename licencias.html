@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granjas Ojai</title>
+
+    <link rel="stylesheet" href="css/licencias.css">
+    <link rel="icon" type="image/png" href="images/logo_pagina.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+<style>    
+a{
+        font-family: Poppins;
+    }
+
+th, td {
+    white-space: normal; 
+    word-break: break-all;
+}
+#toggleButton{
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+
+#menu a{
+    font-family: 'Montserrat', sans-serif;
+}
+.fi-sr-users-medical{
+    color: orange;
+  }
+  
+  #menu li {
+    margin-bottom: 10px;
+  }
+
+  #menu a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  #menu a:hover {
+    color: orange;
+  }
+
+  #menu .icon {
+    margin-right: 10px;
+    color: orange;
+  }
+  
+.dataTables_length, .dataTables_filter {
+    font-family: 'Inter', sans-serif;
+}
+
+.dataTables_filter input {
+    font-family: 'Inter', sans-serif;
+}
+.dataTables_info {
+    font-family: 'Inter', sans-serif;
+}
+
+.dataTables_paginate .paginate_button {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f0f0; 
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+}
+.dataTables_wrapper {
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+        .dataTables_filter {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: -20px;
+        }
+
+        .dataTables_filter input {
+            font-family: 'Poppins', sans-serif;
+            width: 200px;
+            padding: 5px; 
+        }
+        .add-button{
+            margin-top: -50px;
+        }
+table.dataTable tbody tr.caducada {
+    background-color: #ffcccc; 
+    color: #B31312;
+}
+
+table.dataTable tbody tr.permanente {
+    background-color: #C7E9B0; 
+    color: #3A6351;
+}
+
+table.dataTable tbody tr.falta-un-anno {
+    background-color: #ffffcc; 
+    color: #FF8400;
+}
+
+table.dataTable tbody tr.falta-mas-de-un-anno {
+    background-color: #cce5ff;
+    color: #0A6EBD;
+}
+table.dataTable {
+    width: 100% !important;
+}
+
+.btnEliminar {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnEliminar:hover {
+    background-color: #c82333;
+}
+
+.btnEliminar:active {
+  background-color: #bd2130; 
+}
+</style>
+</head>
+<body>
+<nav id="navbar">
+    <div class="logo"><img src="images/logo_pagina.png" alt="logo"></div>
+<button id="toggleButton"><i class="fi fi-br-menu-burger"></i></button>
+    <a href="index.html" class="logout-button"><i class="fi fi-br-exit"></i></a>
+</nav>
+<div id="menu">
+        <ul>
+            <br><br><br>
+            <li><a href="licencias.html"><i class="fas fa-id-card icon"></i>Licencias</a></li><br>
+            <li><a href="empleados.html"><i class="fas fa-users icon"></i>Empleados</a></li><br>
+            <li><a href="vehiculos.html"><i class="fas fa-car icon"></i>Vehículos</a></li><br>
+            <li><a href="area.php"><i class="fas fa-building icon"></i>Áreas</a></li><br>
+            <li><a href="departamentos.php"><i class="fas fa-sitemap icon"></i>Departamentos</a></li><br>
+            <li><a href="taller.html"><i class="fas fa-tools icon"></i>Taller</a></li><br>
+            <li><a href="sucursales.html"><i class="fas fa-map-marker-alt icon"></i>Sucursales</a></li><br>
+            <li><a href="usuarios.html"><i class="fi fi-sr-users-medical"></i>Usuarios</a></li>
+            <br><br><br><br><br>
+            <li><a href="doc/ManualUsuario.pdf"><i class="fi fi-rr-document"></i> Manual</a></li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <h1>Licencias</h1>
+        <a href="https://plataforma.direcciontransitotlapadecomonfort.gob.mx/">Validar Licencias y Permisos</a>
+        <button class="add-button" id="openFormButton"><i class="fi fi-sr-plus-small"></i> Agregar</button><br><br>
+
+<div id="myForm">
+    <h2>Agregar Licencias</h2>
+    <form id="formData" action="guardar_licencias.php" method="post">
+      <label for="nombreEmpleado">Nombre del empleado:</label>
+      <input type="text" name="nombreEmpleado" id="nombreEmpleado" required><br>
+
+      <label for="numeroLicencia">Número de licencia:</label>
+      <input type="text" name="numeroLicencia" id="numeroLicencia" required><br>
+  
+      <label for="tipoLicencia">Tipo de licencia:</label>
+      <input type="text" name="tipoLicencia" id="tipoLicencia"><br>
+  
+      <label for="fechaVigencia">Fecha de vigencia:</label>
+      <input type="date" name="fechaVigencia" id="fechaVigencia"><br>
+  
+    <label for="permanente">¿Es Permanente?</label>
+    <input type="checkbox" name="permanente" id="permanente">
+<br><br>
+      <input class="enviar" type="submit" value="Enviar">
+      <button type="button" id="cancelButton">Cancelar</button>
+    </form>
+  </div>
+    
+  <table id="dataTable">
+        <thead>
+            <tr>
+            <th width="25%">Nombre del empleado</th>
+                <th>Número de licencia</th>
+                <th width="15%">Tipo de licencia</th>
+                <th>Fecha de vigencia</th>
+                <th>Permanente</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>    
+    </div>
+        <script>
+                function toggleMenu() {
+                    var menu = document.getElementById('menu');
+                    var content = document.getElementById('content');
+                    menu.classList.toggle('hidden');
+                    content.classList.toggle('hidden');
+                }
+                document.getElementById('toggleButton').addEventListener('click', toggleMenu);
+    
+                var form = document.getElementById("myForm");
+                var button = document.getElementById("openFormButton");
+                var cancelButton = document.getElementById("cancelButton");
+                var formData = document.getElementById("formData");
+                var dataBody = document.getElementById("dataBody");
+                var editingRow = null;
+                var isEditing = false;
+    
+                button.onclick = function () {
+                    if (!isEditing) {
+                        form.style.display = "block";
+                    }
+                };
+    
+                cancelButton.onclick = function () {
+                    if (isEditing) {
+                        form.style.display = "none";
+                    } else {
+                        form.style.display = "none";
+                        formData.reset();
+                    }
+                }
+    function ajustarDataTable() {
+        var dataTable = $('#dataTable').DataTable();
+        dataTable.columns.adjust().responsive.recalc();
+    }
+
+    $(document).ready(function() {
+        $.ajax({
+            url: 'mostrar_datos.php',
+            dataType: 'json',
+            success: function(data) {
+                var dataTable = $('#dataTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'nombreEmpleado' },
+                        { data: 'numeroLicencia' },
+                        { data: 'tipoLicencia' },
+                        { 
+                            data: 'fechaVigencia',
+                            render: function(data, type, row) {
+                                return row.permanente === '1' ? '0000-00-00' : data;
+                            }
+                        },
+                        {
+                            data: 'permanente',
+                            render: function(data, type, row) {
+                                return data === '1' ? 'Sí' : 'No';
+                            }
+                        },
+                        { 
+                            data: 'estadoLicencia',
+                            render: function(data, type, row) {
+                                return row.permanente === '1' ? '' : data;
+                            }
+                        },
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                return '<button class="btnEliminar" data-id="' + data.id + '"><i class="fi fi-rr-trash"></i></button>';
+                            }
+                        }
+                    ],
+                    "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                    },
+                    "rowCallback": function(row, data, index) {
+                        var currentDate = new Date();
+                        var fechaVigencia = new Date(data.fechaVigencia);
+
+                        if (fechaVigencia < currentDate) {
+                            $(row).addClass('caducada'); 
+                        } else {
+                            var oneYearFromNow = new Date();
+                            oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+
+                            if (fechaVigencia <= oneYearFromNow && data.permanente !== '1') {
+                                $(row).addClass('falta-un-anno'); 
+                            }
+                            var moreThanOneYearFromNow = new Date();
+                            moreThanOneYearFromNow.setFullYear(moreThanOneYearFromNow.getFullYear() + 1);
+
+                            if (fechaVigencia > moreThanOneYearFromNow && data.permanente !== '1') {
+                                $(row).addClass('falta-mas-de-un-anno'); 
+                            }
+                        }
+                        if (data.permanente === '1') {
+                            $(row).addClass('permanente'); 
+                        }
+                    }
+                });
+
+                $('#dataTable tbody').on('click', '.btnEliminar', function() {
+        var id = $(this).data('id');
+        if (confirm('¿Estás seguro de que deseas eliminar esta licencia?')) {
+            $.ajax({
+                url: 'eliminar_licencias.php',
+                type: 'POST',
+                data: { id: id },
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success) {
+                        window.location.href = data.redirect;
+                    } else {
+                        alert('Hubo un error al eliminar la licencia.');
+                    }
+                },
+                error: function() {
+                    alert('Hubo un error al comunicarse con el servidor.');
+                }
+            });
+        }
+    });
+                $('#toggleButton').on('click', function() {
+                    ajustarDataTable();
+                });
+            }
+        });
+    });
+
+    function ajustarDataTable() {
+        var dataTable = $('#dataTable').DataTable();
+        dataTable.columns.adjust().responsive.recalc();
+    }
+        $('#toggleButton').on('click', function() {
+            ajustarDataTable();
+        });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granjas Ojai</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="images/logo_pagina.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+    <style>
+th, td {
+    white-space: normal; 
+    word-break: break-all;
+}
+#toggleButton{
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+
+#menu a{
+    font-family: 'Montserrat', sans-serif;
+}
+.fi-sr-users-medical{
+    color: orange;
+  }
+  
+  #menu li {
+    margin-bottom: 10px;
+  }
+
+  #menu a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  #menu a:hover {
+    color: orange;
+  }
+
+  #menu .icon {
+    margin-right: 10px;
+    color: orange;
+  }
+.dataTables_length, .dataTables_filter {
+    font-family: 'Inter', sans-serif;
+}
+
+.dataTables_filter input {
+    font-family: 'Inter', sans-serif;
+}
+.dataTables_info {
+    font-family: 'Inter', sans-serif;
+}
+
+.dataTables_paginate .paginate_button {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f0f0; 
+    border: 1px solid #ddd; 
+    padding: 6px 10px; 
+}
+.dataTables_wrapper {
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .dataTables_filter {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: -20px;
+        }
+        .dataTables_filter input {
+            font-family: 'Poppins', sans-serif;
+            width: 200px;
+            padding: 5px;
+        }
+        .add-button{
+            margin-top: -50px;
+        }
+        #content {
+    margin-top: 90px; 
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    margin-left: 190px;
+  }
+  #dataTable {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+table.dataTable {
+    width: 100% !important;
+}
+.eliminar-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.eliminar-button:hover {
+    background-color: #c82333;
+}
+
+
+    </style>
+</head>
+<body>
+<nav id="navbar">
+    <div class="logo"><img src="images/logo_pagina.png" alt="logo"></div>
+<button id="toggleButton"><i class="fi fi-br-menu-burger"></i></button>
+    <a href="index.html" class="logout-button"><i class="fi fi-br-exit"></i></a>
+</nav>
+
+<div id="menu">
+    <ul>
+        <br><br><br>
+        <li><a href="licencias.html"><i class="fas fa-id-card icon"></i>Licencias</a></li><br>
+        <li><a href="empleados.html"><i class="fas fa-users icon"></i>Empleados</a></li><br>
+        <li><a href="vehiculos.html"><i class="fas fa-car icon"></i>Vehículos</a></li><br>
+        <li><a href="area.php"><i class="fas fa-building icon"></i>Áreas</a></li><br>
+        <li><a href="departamentos.php"><i class="fas fa-sitemap icon"></i>Departamentos</a></li><br>
+        <li><a href="taller.html"><i class="fas fa-tools icon"></i>Taller</a></li><br>
+        <li><a href="sucursales.html"><i class="fas fa-map-marker-alt icon"></i>Sucursales</a></li><br>
+        <li><a href="usuarios.html"><i class="fi fi-sr-users-medical"></i>Usuarios</a></li>
+        <br><br><br><br><br>
+        <li><a href="doc/ManualUsuario.pdf"><i class="fi fi-rr-document"></i> Manual</a></li>
+    </ul>
+</div>
+
+    <div id="content">
+        <h1>Empleados</h1>
+        <button class="add-button" id="openFormButton"><i class="fi fi-sr-plus-small"></i> Agregar</button> <br>
+
+        <div id="myForm">
+        <h2>Agregar Empleados</h2>
+        <form id="formData" method="POST" action="guardar_empleados.php">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br>
+            <label for="puesto">Puesto:</label><br>
+            <input type="text" id="puesto" name="puesto" required><br>
+            <label for="correo">Correo electrónico:</label><br>
+            <input type="email" id="correo" name="correo" required><br>
+            <label for="telefono">Teléfono:</label><br>
+            <input type="tel" id="telefono" name="telefono" required><br>
+            <label for="curp">CURP:</label><br>
+            <input type="text" id="curp" name="curp" required><br>
+            <label for="rfc">RFC:</label><br>
+            <input type="text" id="rfc" name="rfc" required><br>
+        
+            <input class="enviar" type="submit" value="Enviar">
+            <button type="button" id="cancelButton">Cancelar</button>
+        </form>
+    </div>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Puesto</th>
+                <th>Correo</th>
+                <th style="width: 10%;">Teléfono</th>
+                <th>CURP</th>
+                <th>RFC</th>
+                <th style="width: 8%;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    function toggleMenu() {
+            var menu = document.getElementById('menu');
+            var content = document.getElementById('content');
+            menu.classList.toggle('hidden');
+            content.classList.toggle('hidden');
+        }
+        document.getElementById('toggleButton').addEventListener('click', toggleMenu);
+
+        var form = document.getElementById("myForm");
+        var button = document.getElementById("openFormButton");
+        var cancelButton = document.getElementById("cancelButton");
+        var formData = document.getElementById("formData");
+        var dataBody = document.getElementById("dataBody");
+        var isEditing = false;
+
+        button.onclick = function () {
+            if (!isEditing) {
+                form.style.display = "block";
+            }
+        };
+
+        cancelButton.onclick = function () {
+            if (isEditing) {
+                form.style.display = "none";
+            } else {
+                form.style.display = "none";
+                formData.reset();
+            }
+        };
+    </script>
+    <script>
+        $(document).ready(function() {
+            var dataTable = $('#dataTable').DataTable({
+                columns: [
+                    { data: 'nombre' },
+                    { data: 'puesto' },
+                    { data: 'correo' },
+                    { data: 'telefono' },
+                    { data: 'curp' },
+                    { data: 'rfc' },
+                    {
+                        data: null,
+                        render: function(data, type, row) {
+                            return '<button class="eliminar-button" data-id="' + row.id + '"><i class="fi fi-rr-trash"></i></button>';
+                        }
+                    }
+                ],
+                "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                    },
+            });
+            $.ajax({
+                url: 'cargar_datos.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    dataTable.rows.add(data).draw();
+                }
+            });
+        
+            $('#dataTable tbody').on('click', '.eliminar-button', function() {
+    var button = this;
+    var id = $(button).data('id');
+    if (confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+        $.ajax({
+            url: 'eliminar_datos.php',
+            type: 'POST',
+            data: { id: id },
+            success: function(response) {
+                if (response === 'success') {
+                    dataTable.row($(button).parents('tr')).remove().draw(); 
+                } else {
+                    alert('Error al eliminar los datos.');
+                }
+            }
+        });
+    }
+});
+
+        });
+        </script>        
+</body>
+</html>

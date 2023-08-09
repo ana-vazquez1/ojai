@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granjas Ojai</title>
+
+    <style>
+th, td {
+    white-space: normal; /* Permitir que el contenido se ajuste automáticamente */
+    word-break: break-all; /* Forzar el ajuste del contenido en palabras */
+}
+#toggleButton{
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+
+#menu a{
+    font-family: 'Montserrat', sans-serif;
+}
+.fi-sr-users-medical{
+    color: orange;
+  }
+  
+  #menu li {
+    margin-bottom: 10px;
+  }
+
+  #menu a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  #menu a:hover {
+    color: orange;
+  }
+
+  #menu .icon {
+    margin-right: 10px;
+    color: orange;
+  }
+  .dataTables_length, .dataTables_filter {
+    font-family: 'Inter', sans-serif;
+}
+
+.dataTables_filter input {
+    font-family: 'Inter', sans-serif;
+}
+.dataTables_info {
+    font-family: 'Inter', sans-serif;
+}
+
+.dataTables_paginate .paginate_button {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd; 
+    padding: 6px 10px; 
+}
+.dataTables_wrapper {
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+        .dataTables_filter {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: -20px;
+        }
+
+        .dataTables_filter input {
+            font-family: 'Poppins', sans-serif;
+            width: 200px;
+            padding: 5px; 
+        }
+        .add-button{
+            margin-top: -50px;
+        }
+table.dataTable {
+    width: 100% !important;
+}
+    .delete-button {
+        background-color: #dc3545; 
+        color: #fff; 
+        border: none; 
+        padding: 8px 12px; 
+        border-radius: 4px; 
+        cursor: pointer; 
+    }
+
+    .delete-button:hover {
+        background-color: #c82333;
+    }
+
+    .delete-button:active {
+        background-color: #bd2130;
+    }
+</style>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="images/logo_pagina.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <script src="js/script.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    
+</head>
+<body>
+<nav id="navbar">
+    <div class="logo"><img src="images/logo_pagina.png" alt="logo"></div>
+<button id="toggleButton"><i class="fi fi-br-menu-burger"></i></button>
+    <a href="index.html" class="logout-button"><i class="fi fi-br-exit"></i></a>
+</nav>
+
+<div id="menu">
+    <ul>
+        <br><br><br>
+        <li><a href="licencias.html"><i class="fas fa-id-card icon"></i>Licencias</a></li><br>
+        <li><a href="empleados.html"><i class="fas fa-users icon"></i>Empleados</a></li><br>
+        <li><a href="vehiculos.html"><i class="fas fa-car icon"></i>Vehículos</a></li><br>
+        <li><a href="area.php"><i class="fas fa-building icon"></i>Áreas</a></li><br>
+        <li><a href="departamentos.php"><i class="fas fa-sitemap icon"></i>Departamentos</a></li><br>
+        <li><a href="taller.html"><i class="fas fa-tools icon"></i>Taller</a></li><br>
+        <li><a href="sucursales.html"><i class="fas fa-map-marker-alt icon"></i>Sucursales</a></li><br>
+        <li><a href="usuarios.html"><i class="fi fi-sr-users-medical"></i>Usuarios</a></li>
+        <br><br><br><br><br>
+        <li><a href="doc/ManualUsuario.pdf"><i class="fi fi-rr-document"></i> Manual</a></li>
+    </ul>
+</div>
+    <div id="content">
+        <h1>Vehículos</h1>
+        <button class="add-button" id="openFormButton"><i class="fi fi-sr-plus-small"></i> Agregar</button><br>
+
+    <div id="myForm">
+        <h2>Agregar Vehículos</h2>
+        <form id="formData">
+            <label for="economico">Económico:</label><br>
+            <input type="text" name="economico" id="economico" required><br>
+
+            <label for="nombre">Nombre de la unidad:</label><br>
+            <input type="text" name="nombre"  id="nombre" required><br>
+
+            <label for="modelo">Modelo:</label><br>
+            <input type="text" id="modelo" name="modelo" required><br>
+
+            <label for="placas">Placas:</label><br>
+            <input type="text" id="placas" name="placas" required><br>
+
+            <label for="tipoPlaca">Tipo de placa:</label><br>
+            <input type="text" id="tipoPlaca" name="tipoPlaca" required><br>
+            
+            <label for="conductor">Conductor:</label><br>
+            <input type="text" id="conductor" name="conductor" required><br>
+
+            <label for="departamento">Departamento:</label><br>
+            <input type="text" id="departamento" name="departamento" required><br>
+
+            <label for="cargoA">Cargo a:</label><br>
+            <input type="text" id="cargoA" name="cargoA" required><br>
+
+            <label for="tipo">Tipo de unidad:</label><br>
+            <input type="text" id="tipo" name="tipo" required><br>
+
+            <input class="enviar" type="submit" value="Enviar">
+            <button type="button" id="cancelButton">Cancelar</button>
+        </form>
+    </div>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th width="9%">Económico</th>
+                <th  width="12%">Unidad</th>
+                <th  width="6%">Modelo</th>
+                <th width="7%">Placas</th>
+                <th width="11%">Tipo de placa</th>
+                <th width="17%">Conductor</th>
+                <th width="11%">Departamento</th>
+                <th width="7%">Cargo A</th>
+                <th width="11%">Tipo de unidad</th>
+                <th width="6%"></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    </div>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            var content = document.getElementById('content');
+            menu.classList.toggle('hidden');
+            content.classList.toggle('hidden');
+        }
+        document.getElementById('toggleButton').addEventListener('click', toggleMenu);
+        var form = document.getElementById("myForm");
+        var button = document.getElementById("openFormButton");
+        var cancelButton = document.getElementById("cancelButton");
+        var formData = document.getElementById("formData");
+        var dataBody = document.getElementById("dataBody");
+        var editingRow = null;
+        var isEditing = false;
+        button.onclick = function () {
+            if (!isEditing) {
+                form.style.display = "block";
+            }
+        };
+        cancelButton.onclick = function () {
+            if (isEditing) {
+                form.style.display = "none";
+            } else {
+                form.style.display = "none";
+                formData.reset();
+            }
+        };
+        formData.onsubmit = function (event) {
+            event.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "vehiculos_data.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        console.log(response.message); 
+                        if (response.success) {
+                            loadData();
+                            form.style.display = "none"; 
+                            formData.reset();
+                        } else {
+                        }
+                    } else {
+                    }
+                }
+            };
+            xhr.send(new URLSearchParams(new FormData(formData)));
+        };
+        function loadData() {
+            $('#dataTable').DataTable().ajax.reload();
+        }
+    
+        // Configuración de DataTables
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                paging: true,
+                ordering: true,
+                order: [[0, 'asc']],
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+                },
+                ajax: {
+                    url: 'get_vehiculos.php',
+                    type: 'GET',
+                    dataSrc: ''
+                },
+                columns: [
+                    { data: 'economico' },
+                    { data: 'nombre' },
+                    { data: 'modelo' },
+                    { data: 'placas' },
+                    { data: 'tipoPlaca' },
+                    { data: 'conductor' },
+                    { data: 'departamento' },
+                    { data: 'cargoA' },
+                    { data: 'tipo' },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<button class="delete-button" data-id="' + data.id + '"><i class="fi fi-rr-trash"></i></button>';
+                        }
+                    }
+                ]
+            });
+        });
+    
+        function ajustarDataTable() {
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.columns.adjust().responsive.recalc();
+        }
+    
+        $(document).ready(function () {
+            $('#toggleButton').on('click', function () {
+                ajustarDataTable();
+            });
+        });
+    
+        $(document).on('click', '.delete-button', function () {
+            var vehiculoId = $(this).data('id');
+            if (confirm("¿Estás seguro de que deseas eliminar este vehículo?")) {
+                $.ajax({
+                    url: "data_vehiculos.php",
+                    type: "POST",
+                    data: { id: vehiculoId },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.success) {
+                            loadData();
+                        } else {
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

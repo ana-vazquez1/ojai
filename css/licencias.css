@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
+
+#navbar{
+    position: fixed;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+    z-index: 999;
+}
+#navbar img{
+  width: 30%;
+  margin-left: 30px;
+  height: auto;
+}
+#navbar .search-bar{
+    flex-grow: 0.10;
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 4px;
+    border: none #ccc solid;
+}
+#navbar .logout-button {
+    padding: 5px 10px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#menu {
+    width: 150px;
+    height: 100%;
+    position: fixed;
+    margin-top: 50px;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    transition: left 0.3s ease;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+  }
+
+  #menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #menu li {
+    margin-bottom: 10px;
+  }
+
+  #menu a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  #menu a:hover {
+    color: orange;
+  }
+
+  #menu .icon {
+    margin-right: 10px;
+    color: orange;
+  }
+
+  #toggleButton {
+    padding: 5px 10px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+     
+  #menu .menu-button {
+    margin-top: 5px;
+  }
+  #content {
+    margin-top: 90px; /* Ajustar el valor según el tamaño del navbar */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    margin-left: 190px; /* Ancho del menú desplegable + margen */
+  }
+  
+  #content h1 {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  #content .add-button {
+    float: right;
+    padding: 5px 10px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  #menu.hidden {
+    left: -200px;
+  }
+  
+  #content.hidden {
+    margin-left: 20px;
+  }
+  #myForm {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+    z-index: 999; /* Para asegurar que esté por encima del resto del contenido */
+  }
+  
+  #myForm h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  #myForm input[type="text"],
+  #myForm input[type="date"],
+  #myForm input[type="file"],
+  #myForm input[type= "tel"],
+  #myForm button {
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px #000 solid;
+    border-radius: 2.5px;
+  }
+
+  #myForm textarea{
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px #000 solid;
+    border-radius: 4px;
+  }
+
+  #myForm input[type="email"]{
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px #000 solid;
+    border-radius: 4px;
+  }
+  
+  #myForm button[type="button"] {
+    padding: 5px 10px;
+    background-color: rgb(255, 228, 166);
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;  
+    font-family: 'Poppins', sans-serif;  
+  }
+  
+.enviar{
+    padding: 5px 10px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;  
+    font-family: 'Poppins', sans-serif;  
+  }
+  h1{
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #dataTable {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  #dataTable td, #dataTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #dataTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+    color: black;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 5px;
+  }
